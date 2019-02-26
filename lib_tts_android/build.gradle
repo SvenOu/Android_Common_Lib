@@ -1,0 +1,17 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion "${buildVars.compileSdkVersion}".toInteger()
+    buildToolsVersion "${buildVars.buildToolsVersion}"
+    defaultConfig {
+        minSdkVersion "${buildVars.minSdkVersion}".toInteger()
+        targetSdkVersion "${buildVars.targetSdkVersion}".toInteger()
+        versionCode 1
+        versionName "0.0.1"
+    }
+}
+
+dependencies {
+    api fileTree(include: '*.jar', dir: 'libs')
+    api "${androidSupportAppcompat}"
+}

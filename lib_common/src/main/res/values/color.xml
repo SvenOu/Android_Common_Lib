@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white_10">#19ffffff</color>
+    <color name="white_op5">#7fffffff</color>
+
+    <!--    CycleCountView     -->
+    <color name="cycle_border_color">#ffffff</color>
+    <color name="cycle_color">#c3142e</color>
+
+    <!--    CycleProgressView     -->
+    <color name="un_progress_color">#202020</color>
+    <color name="progress_color">#c9003d</color>
+
+    <!--    PagingView     -->
+    <color name="unselected_dot_color">#4c202020</color>
+    <color name="selected_dot_color">#0f0000</color>
+
+</resources>

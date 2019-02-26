@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            tools:ignore="MissingPrefix"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+            <com.sv.common.widget.CycleProgressView
+                app:strokeWidth="5dp"
+                app:progressColor="@color/assertive"
+                app:unProgressColor="@color/balanced"
+                app:rotate="90"
+                app:value="25"
+                app:maxValue="100"
+                android:layout_height="50dp"
+                android:layout_width="50dp"/>
+
+            <com.sv.common.widget.CycleTextView
+                android:id="@+id/cycleCountView"
+                app:text="5"
+                app:background="@color/positive"
+                app:outerCircleBackgroundColor="@color/assertive"
+                app:innerCircleBackgroundColor="@color/balanced"
+                app:outerCircleRadius="20dp"
+                app:textColor="@color/royal"
+                app:textSize="@dimen/f12"
+                android:layout_width="80dp"
+                android:layout_height="80dp"/>
+
+        </LinearLayout>
+
+        <com.sv.common.widget.PagingView
+            app:backgroundColor="@color/positive"
+            app:unselectedDotColor="@color/assertive"
+            app:selectedDotColor="@color/balanced"
+            app:totalCount="10"
+            app:currentPage="7"
+            app:isDynamic="true"
+            android:layout_width="300dp"
+            android:layout_height="50dp"/>
+
+        <com.sv.common.widget.PagingView
+            app:backgroundColor="@color/positive"
+            app:unselectedDotColor="@color/assertive"
+            app:selectedDotColor="@color/balanced"
+            app:totalCount="10"
+            app:currentPage="7"
+            app:blankWidth="10dp"
+            app:pointWidthHeight="10dp"
+            app:isDynamic="false"
+            android:layout_width="300dp"
+            android:layout_height="50dp"/>
+
+        <com.sv.common.widget.CustomDigitalClock
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.sv.common.widget.ReactiveRatingBar
+            app:lightStar="@drawable/image_star_light"
+            app:darkStar="@drawable/image_star_dark"
+            app:isAutoCalculateHeight="false"
+            app:maxStarSpace="10dp"
+            app:topBottomSpace="5dp"
+            app:starWidth="25dp"
+            app:starHeight="25dp"
+            app:rating="3"
+            app:numStars="5"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"/>
+
+        <com.sv.common.widget.ReactiveRatingBar
+            app:lightStar="@drawable/image_star_light"
+            app:darkStar="@drawable/image_star_dark"
+            app:isAutoCalculateHeight="true"
+            app:maxStarSpace="10dp"
+            app:topBottomSpace="5dp"
+            app:rating="3"
+            app:numStars="5"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"/>
+        <include layout="@layout/example_button_group" />
+
+    </LinearLayout>
+</ScrollView>

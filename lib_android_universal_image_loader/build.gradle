@@ -1,0 +1,13 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion "${buildVars.compileSdkVersion}".toInteger()
+    buildToolsVersion "${buildVars.buildToolsVersion}"
+    useLibrary 'org.apache.http.legacy'
+    defaultConfig {
+        minSdkVersion "${buildVars.minSdkVersion}".toInteger()
+        targetSdkVersion "${buildVars.targetSdkVersion}".toInteger()
+        versionCode 40
+        versionName "1.9.5"
+    }
+}

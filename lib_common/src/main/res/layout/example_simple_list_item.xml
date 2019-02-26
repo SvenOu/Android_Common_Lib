@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.sv.common.widget.CheckedLinelayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/checkedLinelayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingTop="@dimen/normal_text_padding"
+    android:paddingBottom="@dimen/normal_text_padding"
+    tools:ignore="MissingPrefix">
+
+    <TextView
+        android:id="@+id/btn_item"
+        style="@style/BUTTON.RECTANGLE.DARK.TEXT_WHITE.FONT_FAMILY_3"
+        android:layout_width="match_parent"
+        android:layout_height="33dp"/>
+</com.sv.common.widget.CheckedLinelayout>

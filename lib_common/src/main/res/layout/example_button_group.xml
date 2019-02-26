@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/TEXT.TEXT_RED.COLOR_DEFAULT.FONT_FAMILY_4.F5"
+        android:gravity="center"
+        android:text="---------- singale choose group ----------------"/>
+
+    <com.sv.common.widget.ButtonGroup
+        android:id="@+id/single_group"
+        android:layout_margin="@dimen/normal_padding_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+        <Button
+            android:id="@+id/btn1"
+            style="@style/BUTTON.RECTANGLE.DARK.TEXT_WHITE.FONT_FAMILY_3"
+            android:width="0dp"
+            android:layout_weight="1"
+            android:text="Button 1"
+            android:textSize="@dimen/f4"/>
+        <Button
+            android:id="@+id/btn2"
+            style="@style/BUTTON.RECTANGLE.DARK.TEXT_WHITE.FONT_FAMILY_3"
+            android:width="0dp"
+            android:layout_weight="1"
+            android:text="Button 2"
+            android:textSize="@dimen/f4"/>
+        <Button
+            android:id="@+id/btn3"
+            style="@style/BUTTON.RECTANGLE.DARK.TEXT_WHITE.FONT_FAMILY_3"
+            android:width="0dp"
+            android:layout_weight="1"
+            android:text="Button 3"
+            android:textSize="@dimen/f4"/>
+    </com.sv.common.widget.ButtonGroup>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="----------------------------------"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/TEXT.TEXT_RED.COLOR_DEFAULT.FONT_FAMILY_4.F5"
+        android:gravity="center"
+        android:text="---------- muti choose group ----------------"/>
+
+    <com.sv.common.widget.ButtonGroup
+        android:id="@+id/muti_group"
+        android:layout_margin="@dimen/normal_padding_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:tag="2"
+        android:gravity="center_vertical">
+        <Button
+            android:id="@+id/btnM1"
+            style="@style/BUTTON.RECTANGLE.DARK.TEXT_WHITE.FONT_FAMILY_3"
+            android:width="0dp"
+            android:layout_weight="1"
+            android:text="Button M1"
+            android:textSize="@dimen/f4"/>
+        <Button
+            android:id="@+id/btnM2"
+            style="@style/BUTTON.RECTANGLE.DARK.TEXT_WHITE.FONT_FAMILY_3"
+            android:width="0dp"
+            android:layout_weight="1"
+            android:text="Button M2"
+            android:textSize="@dimen/f4"/>
+        <Button
+            android:id="@+id/btnM3"
+            style="@style/BUTTON.RECTANGLE.DARK.TEXT_WHITE.FONT_FAMILY_3"
+            android:width="0dp"
+            android:layout_weight="1"
+            android:text="Button M3"
+            android:textSize="@dimen/f4"/>
+    </com.sv.common.widget.ButtonGroup>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="----------------------------------"/>
+</LinearLayout>

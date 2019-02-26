@@ -1,0 +1,46 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion "${buildVars.compileSdkVersion}".toInteger()
+    buildToolsVersion "${buildVars.buildToolsVersion}"
+    useLibrary 'org.apache.http.legacy'
+
+    defaultConfig {
+        minSdkVersion "${buildVars.minSdkVersion}".toInteger()
+        targetSdkVersion "${buildVars.targetSdkVersion}".toInteger()
+        versionCode 1
+        versionName "0.0.1"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar','*.aar'])
+
+    api "${multidex}"
+    api "${calligraphy}"
+    api "${jacksonCore}"
+    api "${jacksonAnnotations}"
+    api "${jacksonDatabind}"
+    api "${androidRestTemplate}"
+
+    api "${httpclientAndroid}"
+    api "${androidSupportAppcompat}"
+    api "${androidSupportDesign}"
+    api "${androidSupportConstraintLayout}"
+    api "${umengAnalytics}"
+    api "${permissionUtils}"
+
+    api "${androidSupportAppcompat}"
+    api "${androidSupportConstraintLayout}"
+
+    api project(':Android_Common_lib:lib_android_universal_image_loader')
+    api project(':Android_Common_lib:lib_tts_android')
+    api project(':Android_Common_lib:lib_theme')
+}

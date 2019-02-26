@@ -1,0 +1,43 @@
+<resources>
+    <declare-styleable name="CycleTextView">
+        <attr name="background"/>
+        <attr name="text"/>
+        <attr name="textColor"/>
+        <attr name="textSize"/>
+        <attr name="outerCircleBackgroundColor" format="color|reference"/>
+        <attr name="innerCircleBackgroundColor" format="color|reference"/>
+        <attr name="outerCircleRadius" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="CycleProgressView">
+        <attr name="value" format="float"/>
+        <attr name="maxValue" format="float"/>
+        <attr name="strokeWidth" format="dimension"/>
+        <attr name="progressColor" format="color|reference"/>
+        <attr name="unProgressColor" format="color|reference"/>
+        <attr name="rotate" format="float"/>
+    </declare-styleable>
+
+    <declare-styleable name="PagingView">
+        <attr name="backgroundColor" format="color|reference"/>
+        <attr name="unselectedDotColor" format="color|reference"/>
+        <attr name="selectedDotColor" format="color|reference"/>
+        <attr name="totalCount" format="integer"/>
+        <attr name="currentPage" format="integer"/>
+        <attr name="blankWidth" format="dimension"/>
+        <attr name="pointWidthHeight" format="dimension"/>
+        <attr name="isDynamic" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="ReactiveRatingBar">
+        <attr name="lightStar" format="reference"/>
+        <attr name="darkStar" format="reference"/>
+        <attr name="isAutoCalculateHeight" format="boolean"/>
+        <attr name="maxStarSpace" format="dimension"/>
+        <attr name="topBottomSpace" format="dimension"/>
+        <attr name="starWidth" format="dimension"/>
+        <attr name="starHeight" format="dimension"/>
+        <attr name="rating" format="integer"/>
+        <attr name="numStars" format="integer"/>
+    </declare-styleable>
+</resources>

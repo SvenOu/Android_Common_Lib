@@ -30,8 +30,6 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-
-
 public class DatabaseManager {
 
 	private static final String TAG = "DatabaseManager";
@@ -41,6 +39,7 @@ public class DatabaseManager {
 	private Map<String, SQLiteOpenHelper> dbOpenHelperMap;
 	private Context context;
 	private String defaultDatabaseName;
+	private boolean printDetailLog = true;
 
 	public static DatabaseManager getInstance() {
 		if (instance == null) {
@@ -50,9 +49,12 @@ public class DatabaseManager {
 					instance = new DatabaseManager();
 				}
 			}
-		}else{
-			Log.i(TAG, "DatabaseManager instance is NOT null");
 		}
+//		else{
+//			if(instance.printDetailLog){
+//				Log.i(TAG, "DatabaseManager instance is NOT null");
+//			}
+//		}
 		return instance;
 	}
 
@@ -363,5 +365,11 @@ public class DatabaseManager {
 				Log.e(TAG, "DB " + dbConfig.getDatabaseName() + " Exec sql file failed, statement: " + sql, e);
 			}
 		}
+	}
+	public boolean isPrintDetailLog() {
+		return printDetailLog;
+	}
+	public void setPrintDetailLog(boolean printDetailLog) {
+		this.printDetailLog = printDetailLog;
 	}
 }

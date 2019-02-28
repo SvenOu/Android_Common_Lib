@@ -6,6 +6,8 @@ import android.content.res.XmlResourceParser;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.tts.android.db.DatabaseManager;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -39,9 +41,10 @@ public class MybatisManager {
                     instance = new MybatisManager();
                 }
             }
-        } else {
-            Log.i(TAG, "DatabaseManager instance is NOT null");
         }
+//        else {
+//            logInfo("DatabaseManager instance is NOT null");
+//        }
         return instance;
     }
 
@@ -84,13 +87,13 @@ public class MybatisManager {
         while (event != XmlPullParser.END_DOCUMENT) {    //如果还没到文档的结束标志，那么就继续往下处理
             switch (event) {
                 case XmlPullParser.START_DOCUMENT:
-                    Log.i(TAG, "xml parsing begins");
+                    logInfo("xml parsing begins");
                     break;
                 case XmlPullParser.START_TAG:
-                    Log.i(TAG, "current tag：" + xmlParser.getName());
+                    logInfo("current tag：" + xmlParser.getName());
                     if (xmlParser.getName().equals(XmlMappingConfig.MAPPER)) {
                         tempNamespace = xmlParser.getAttributeValue(null, XmlMappingConfig.NAMESPACE);
-                        Log.i(TAG, "namespace：" + tempNamespace);
+                        logInfo("namespace：" + tempNamespace);
                     }
                     if (xmlParser.getName().equals(XmlMappingConfig.TAG_INSERT) ||
                             xmlParser.getName().equals(XmlMappingConfig.TAG_UPDATE) ||
@@ -112,13 +115,15 @@ public class MybatisManager {
                         if (TextUtils.isEmpty(tableForChangeAll)) {
                             tableForChangeAll = "";
                         }
-                        Log.i(TAG, "id：" + id);
-                        Log.i(TAG, "parameter_type：" + parameterType);
-                        Log.i(TAG, "result_type：" + resultType);
-                        Log.i(TAG, "table_for_change_all：" + tableForChangeAll);
+
+                        logInfo("id：" + id);
+                        logInfo("parameter_type：" + parameterType);
+                        logInfo("result_type：" + resultType);
+                        logInfo("table_for_change_all：" + tableForChangeAll);
 
                         tempMethodKey = id + parameterType.replaceAll(",\\s+", "");
-                        Log.i(TAG, "tempMethodKey：" + tempMethodKey);
+
+                        logInfo("tempMethodKey：" + tempMethodKey);
 
                         if (!xmlDocuments.containsKey(tempNamespace)) {
                             xmlDocuments.put(tempNamespace, new HashMap<>());
@@ -142,7 +147,7 @@ public class MybatisManager {
                             doc.setText(xmlParser.getText());
                         }
                     }
-                    Log.i(TAG, "Text:" + xmlParser.getText());
+                    logInfo("Text:" + xmlParser.getText());
                     break;
                 case XmlPullParser.END_TAG:
                     break;
@@ -157,4 +162,10 @@ public class MybatisManager {
     public <T> T getMapper(Class<T> cls) {
         return cls.cast(proxies.get(cls.getName()));
     }
+
+    private static void logInfo(String info){
+        if(DatabaseManager.getInstance().isPrintDetailLog()){
+            Log.i(TAG, info);
+        }
+    };
 }

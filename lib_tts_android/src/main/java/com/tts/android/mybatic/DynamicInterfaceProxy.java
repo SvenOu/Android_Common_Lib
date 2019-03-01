@@ -63,7 +63,11 @@ public class DynamicInterfaceProxy implements InvocationHandler {
                 return executeQueryForObject(sqlText, returnClass);
             }
         } else {
-            throw new RuntimeException("no interface for method \"" + methodKey + "\" in xml.");
+            try {
+                return method.invoke(this, args);
+            }catch (Exception e){
+                throw new RuntimeException("no interface for method \"" + methodKey + "\" in xml.");
+            }
         }
         return null;
     }

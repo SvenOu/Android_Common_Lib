@@ -90,21 +90,26 @@ public class WebServerActivity extends AppCompatActivity {
         floatingActionButtonOnOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isConnectedInWifi()) {
-                    if (!androidWebServer.isStarted() && androidWebServer.startAndroidWebServer()) {
-                        androidWebServer.setStarted(true);
-                        textViewMessage.setVisibility(View.VISIBLE);
-                        floatingActionButtonOnOff.setBackgroundTintList(ContextCompat.getColorStateList(WebServerActivity.this, R.color.colorGreen));
-                    } else if (androidWebServer.stopAndroidWebServer()) {
-                        androidWebServer.setStarted(false);
-                        textViewMessage.setVisibility(View.INVISIBLE);
-                        floatingActionButtonOnOff.setBackgroundTintList(ContextCompat.getColorStateList(WebServerActivity.this, R.color.colorRed));
-                    }
-                } else {
-                    Snackbar.make(coordinatorLayout, getString(R.string.wifi_message), Snackbar.LENGTH_LONG).show();
-                }
+                toggleSerer();
             }
         });
+        toggleSerer();
+    }
+
+    private void toggleSerer() {
+        if (isConnectedInWifi()) {
+            if (!androidWebServer.isStarted() && androidWebServer.startAndroidWebServer()) {
+                androidWebServer.setStarted(true);
+                textViewMessage.setVisibility(View.VISIBLE);
+                floatingActionButtonOnOff.setBackgroundTintList(ContextCompat.getColorStateList(WebServerActivity.this, R.color.colorGreen));
+            } else if (androidWebServer.stopAndroidWebServer()) {
+                androidWebServer.setStarted(false);
+                textViewMessage.setVisibility(View.INVISIBLE);
+                floatingActionButtonOnOff.setBackgroundTintList(ContextCompat.getColorStateList(WebServerActivity.this, R.color.colorRed));
+            }
+        } else {
+            Snackbar.make(coordinatorLayout, getString(R.string.wifi_message), Snackbar.LENGTH_LONG).show();
+        }
     }
 
     //region Private utils Method

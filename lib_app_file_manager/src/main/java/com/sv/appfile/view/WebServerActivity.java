@@ -31,7 +31,7 @@ import fi.iki.elonen.NanoHTTPD;
 public class WebServerActivity extends AppCompatActivity {
     private static final String TAG = WebServerActivity.class.getName();
 
-    private String applicatonId;
+    private String applicationId;
     private int serverPort;
 
     // INSTANCE OF ANDROID WEB SERVER
@@ -49,7 +49,7 @@ public class WebServerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_server);
 
-        applicatonId = getIntent().getStringExtra("applicatonId");
+        applicationId = getIntent().getStringExtra("applicationId");
         serverPort = getIntent().getIntExtra("serverPort",
                 AndroidWebServer.SERVER_PORT);
 
@@ -70,7 +70,7 @@ public class WebServerActivity extends AppCompatActivity {
 
                     @Override
                     public NanoHTTPD.Response serve(NanoHTTPD.IHTTPSession session) {
-                        return fileService.handerUri(applicatonId, session);
+                        return fileService.handerUri(applicationId, session);
                     }
 
                     @Override
@@ -121,7 +121,7 @@ public class WebServerActivity extends AppCompatActivity {
         WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
         int ipAddress = wifiManager.getConnectionInfo().getIpAddress();
         final String formatedIpAddress = String.format("%d.%d.%d.%d", (ipAddress & 0xff), (ipAddress >> 8 & 0xff), (ipAddress >> 16 & 0xff), (ipAddress >> 24 & 0xff));
-        return "http://" + formatedIpAddress + ":" + serverPort + "/"+ applicatonId;
+        return "http://" + formatedIpAddress + ":" + serverPort + "/"+ applicationId;
     }
 
     public boolean isConnectedInWifi() {

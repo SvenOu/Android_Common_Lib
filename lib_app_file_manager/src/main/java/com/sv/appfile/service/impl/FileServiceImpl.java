@@ -170,10 +170,8 @@ public class FileServiceImpl implements FileService {
     }
 
     private File generateUserDirZip(File file, File zip) throws ZipException, IOException {
-        if(zip.delete()){
+        if(!zip.exists() || zip.delete()){
             zip.getParentFile().mkdirs();
-        }else {
-            return null;
         }
         String zipFilePath = zip.getAbsolutePath();
         ZipFile zipFile = new ZipFile(zipFilePath);

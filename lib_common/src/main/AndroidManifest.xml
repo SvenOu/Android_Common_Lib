@@ -20,5 +20,8 @@
             android:name=".test.view.TestWigetActivity"
             android:screenOrientation="portrait">
         </activity>
+
+        <!-- for google map lib-->
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
     </application>
 </manifest>

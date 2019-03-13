@@ -258,7 +258,7 @@ public class FloatingSwitchService extends Service implements View.OnClickListen
             androidWebServer.stopAndroidWebServer();
             androidWebServer.destoryInstance();
         }
-        if (mFloatingView != null) {
+        if (mFloatingView != null && mWindowManager != null) {
             mWindowManager.removeView(mFloatingView);
         }
         super.onDestroy();

@@ -77,6 +77,7 @@ public class FloatingSwitchService extends Service implements View.OnClickListen
         if(intent == null){
             Log.e(TAG, "intent is null, stopSelf");
             stopSelf();
+            return super.onStartCommand(intent, flags, startId);
         }
         applicationId = intent.getStringExtra("applicationId");
         serverPort = intent.getIntExtra("serverPort",

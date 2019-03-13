@@ -25,4 +25,54 @@
         <item name="android:windowBackground">@android:color/transparent</item> <!-- 自己想要的背景 -->
         <item name="android:backgroundDimEnabled">true</item> <!-- 模糊 -->
     </style>
+
+    <!--  diliver  start -->
+
+    <style name="light_diliver">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/light</item>
+    </style>
+    <style name="stable_diliver">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/stable</item>
+    </style>
+    <style name="positive_diliver">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/positive</item>
+    </style>
+    <style name="calm_diliver">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/calm</item>
+    </style>
+    <style name="balanced_diliver">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/balanced</item>
+    </style>
+    <style name="energized_diliver">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/energized</item>
+    </style>
+    <style name="assertive_diliver">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/assertive</item>
+    </style>
+    <style name="royal_diliver">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/royal</item>
+    </style>
+    <style name="dark_diliver">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/dark</item>
+    </style>
+
+    <!--  diliver  end -->
 </resources>

@@ -1,6 +1,8 @@
 <resources>
-    <string name="message">You can now access the Android Web Server from a browser connected to the same wifi network.</string>
-    <string name="dialog_exit_message">Android Web Server is currently running. If you exit the application we will stop it. Are sure you want to exit the application?</string>
-    <string name="warning">Warning</string>
-    <string name="wifi_message">You must connect to a WiFi network to use this service.</string>
+    <string name="android_server_message">You can now access the Android Web Server from a browser connected to the same wifi network.</string>
+    <string name="android_server_permission_not_available">Draw over other app permission not available. Closing the application</string>
+    <string name="android_server_warning">Warning</string>
+    <string name="android_server">Android Serer</string>
+    <string name="android_server_back">Back</string>
+    <string name="android_server_wifi_message">You must connect to a WiFi network to use this service.</string>
 </resources>

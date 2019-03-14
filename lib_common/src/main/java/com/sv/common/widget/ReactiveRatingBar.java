@@ -137,7 +137,7 @@ public class ReactiveRatingBar extends View {
     public boolean onTouchEvent(MotionEvent event) {
         int starRating = calculateStarRating(event);
         if (null != reactiveRatingBarListener) {
-            reactiveRatingBarListener.onRatingChanged(this, starRating);
+            reactiveRatingBarListener.onRatingTouchChanged(this, starRating);
         }
         this.setRating(starRating);
         this.invalidate();
@@ -184,7 +184,7 @@ public class ReactiveRatingBar extends View {
     }
 
     public interface ReactiveRatingBarListener {
-        void onRatingChanged(ReactiveRatingBar reactiveRatingBar, int rating);
+        void onRatingTouchChanged(ReactiveRatingBar reactiveRatingBar, int rating);
     }
 
     public ReactiveRatingBarListener getReactiveRatingBarListener() {

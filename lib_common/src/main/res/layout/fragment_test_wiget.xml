@@ -75,6 +75,7 @@
             android:layout_height="wrap_content"/>
 
         <com.sv.common.widget.ReactiveRatingBar
+            android:id="@+id/reactiveRatingBar1"
             app:lightStar="@drawable/image_star_light"
             app:darkStar="@drawable/image_star_dark"
             app:isAutoCalculateHeight="false"
@@ -88,6 +89,7 @@
             android:layout_height="70dp"/>
 
         <com.sv.common.widget.ReactiveRatingBar
+            android:id="@+id/reactiveRatingBar2"
             app:lightStar="@drawable/image_star_light"
             app:darkStar="@drawable/image_star_dark"
             app:isAutoCalculateHeight="true"

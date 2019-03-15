@@ -9,6 +9,7 @@ import android.os.Build;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
+import android.support.v4.content.FileProvider;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -24,6 +25,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -428,4 +431,27 @@ public class FileUtils {
         }
     }
 
+    public static Uri getUri(Context context, String fileProviderName, String filePath) {
+        return getUri(context, fileProviderName, new File(filePath));
+    }
+
+    public static Uri getUri(Context context, String fileProviderName, File f) {
+        Uri uri;
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+            uri = FileProvider.getUriForFile(context, fileProviderName, f);
+        }else{
+            uri = Uri.fromFile(f);
+        };
+        return uri;
+    }
+    public static File uriToFile(Uri uri){
+        String path = uri.getPath();
+        File file = null;
+        try {
+            file = new File(new URI(path));
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+        return file;
+    }
 }

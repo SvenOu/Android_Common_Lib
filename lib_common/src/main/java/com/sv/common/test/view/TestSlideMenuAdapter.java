@@ -26,6 +26,7 @@ public class TestSlideMenuAdapter extends AbstractSimpleListBaseAdapter<TestMenu
         menuDatas.clear();
         menuDatas.add(TestMenuData.newInstance(R.string.test_wiget_fragment, CommonTestMenuData.TEST_WIGHET_FRAGMENT.getValue(), TestWigetFragment.class));
         menuDatas.add(TestMenuData.newInstance(R.string.test_list_fragment, CommonTestMenuData.TEST_LIST_FRAGMENT.getValue(), TestListFragment.class));
+        menuDatas.add(TestMenuData.newInstance(R.string.test_crop_fragment, CommonTestMenuData.TEST_CROP_FRAGMENT.getValue(), TestCropFragment.class));
     }
 
     @Override

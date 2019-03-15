@@ -6,6 +6,7 @@ public enum CommonTestMenuData {
      */
     TEST_WIGHET_FRAGMENT("TestWigetFragment"),
     TEST_LIST_FRAGMENT("TestListFragment"),
+    TEST_CROP_FRAGMENT("TestCropFragment"),
     ;
 
     private String value;

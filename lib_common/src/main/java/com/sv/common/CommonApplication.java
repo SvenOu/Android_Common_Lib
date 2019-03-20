@@ -14,9 +14,7 @@ import com.sv.common.util.Logger;
 import com.sv.lib_theme.ThemeManager;
 import com.umeng.analytics.MobclickAgent;
 
-import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
-
-public class CommonApplication extends Application {
+public abstract class CommonApplication extends Application {
     private static final String TAG = CommonApplication.class.getSimpleName();
     private static CommonApplication instance;
     static {
@@ -71,11 +69,8 @@ public class CommonApplication extends Application {
         ImageLoader loader = ImageLoader.getInstance();
         loader.init(config);
     }
-    
-    private boolean isDebugMode() {
-        // TODO: 2019/2/2
-        return true;
-    }
+
+    protected abstract boolean isDebugMode();
 
     public static CommonApplication getInstance() {
         if (null == instance) {

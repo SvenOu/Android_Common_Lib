@@ -10,6 +10,8 @@ import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
+import com.sv.common.executor.ScheduledExecutorManager;
+import com.sv.common.executor.ScheduledExecutorTask;
 import com.sv.common.util.Logger;
 import com.sv.lib_theme.ThemeManager;
 import com.umeng.analytics.MobclickAgent;
@@ -17,6 +19,7 @@ import com.umeng.analytics.MobclickAgent;
 public abstract class CommonApplication extends Application {
     private static final String TAG = CommonApplication.class.getSimpleName();
     private static CommonApplication instance;
+    private ScheduledExecutorManager scheduledExecutorManager;
     static {
         // 开启 5.0 以下系统的 vector 支持
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
@@ -35,7 +38,15 @@ public abstract class CommonApplication extends Application {
         initArouter();
         initStyles();
         initUmeng();
+        initScheduledExecutor();
     }
+
+    private void initScheduledExecutor(){
+        if(null == scheduledExecutorManager){
+            scheduledExecutorManager = ScheduledExecutorManager.getInstance();
+            scheduledExecutorManager.start();
+        }
+    };
 
     private void initStyles() {
         ThemeManager.getInstance().init(this);

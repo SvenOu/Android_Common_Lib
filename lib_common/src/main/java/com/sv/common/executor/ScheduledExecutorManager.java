@@ -1,7 +1,6 @@
 package com.sv.common.executor;
 
 import com.sv.common.util.Logger;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executors;
@@ -9,6 +8,9 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 定时任务管理器
+ */
 public class ScheduledExecutorManager implements Runnable {
     private static final String TAG = ScheduledExecutorManager.class.getName();
 
@@ -44,6 +46,8 @@ public class ScheduledExecutorManager implements Runnable {
         if(!tasks.contains(task)){
             tasks.add(task);
             recalculateMaxTime();
+        }else {
+            throw new RuntimeException("task: " + task.getName() + " already exists in task list.");
         }
     }
 

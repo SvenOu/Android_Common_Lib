@@ -179,5 +179,9 @@
     <orderEntry type="module" module-name="lib_tts_android" />
     <orderEntry type="module" module-name="lib_crop_image" />
     <orderEntry type="library" name="Gradle: org.apache.http.legacy-android-28" level="project" />
+    <orderEntry type="module" module-name="lib_android_universal_image_loader" />
+    <orderEntry type="module" module-name="lib_theme" />
+    <orderEntry type="module" module-name="lib_tts_android" />
+    <orderEntry type="module" module-name="lib_crop_image" />
   </component>
 </module>

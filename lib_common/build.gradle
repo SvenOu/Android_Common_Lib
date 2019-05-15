@@ -44,4 +44,7 @@ dependencies {
     api project(':Android_Common_lib:lib_tts_android')
     api project(':Android_Common_lib:lib_theme')
     api project(':Android_Common_lib:lib_crop_image')
+
+    debugApi "${blockcanary}"
+    releaseApi "${blockcanaryNoOp}"
 }

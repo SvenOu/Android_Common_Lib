@@ -6,14 +6,11 @@ import android.support.multidex.MultiDex;
 import android.support.v7.app.AppCompatDelegate;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.github.moduth.blockcanary.BlockCanary;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
-import com.sv.common.context.AppBlockCanaryContext;
 import com.sv.common.executor.ScheduledExecutorManager;
-import com.sv.common.executor.ScheduledExecutorTask;
 import com.sv.common.util.Logger;
 import com.sv.lib_theme.ThemeManager;
 import com.umeng.analytics.MobclickAgent;
@@ -36,16 +33,11 @@ public abstract class CommonApplication extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
-        initBlockCanary();
         initImageLoader();
         initArouter();
         initStyles();
         initUmeng();
         initScheduledExecutor();
-    }
-
-    private void initBlockCanary() {
-        BlockCanary.install(this, new AppBlockCanaryContext()).start();
     }
 
     private void initScheduledExecutor(){

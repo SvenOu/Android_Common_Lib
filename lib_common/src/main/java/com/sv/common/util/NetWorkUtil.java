@@ -1,71 +1,49 @@
 package com.sv.common.util;
 
-public class NetWorkUtil {
-	/** Network type is unknown */
-	public static final int NETWORK_TYPE_UNKNOWN = 0;
-	/** Current network is GPRS */
-	public static final int NETWORK_TYPE_GPRS = 1;
-	/** Current network is EDGE */
-	public static final int NETWORK_TYPE_EDGE = 2;
-	/** Current network is UMTS */
-	public static final int NETWORK_TYPE_UMTS = 3;
-	/** Current network is CDMA: Either IS95A or IS95B*/
-	public static final int NETWORK_TYPE_CDMA = 4;
-	/** Current network is EVDO revision 0*/
-	public static final int NETWORK_TYPE_EVDO_0 = 5;
-	/** Current network is EVDO revision A*/
-	public static final int NETWORK_TYPE_EVDO_A = 6;
-	/** Current network is 1xRTT*/
-	public static final int NETWORK_TYPE_1xRTT = 7;
-	/** Current network is HSDPA */
-	public static final int NETWORK_TYPE_HSDPA = 8;
-	/** Current network is HSUPA */
-	public static final int NETWORK_TYPE_HSUPA = 9;
-	/** Current network is HSPA */
-	public static final int NETWORK_TYPE_HSPA = 10;
-	/** Current network is iDen */
-	public static final int NETWORK_TYPE_IDEN = 11;
-	/** Current network is EVDO revision B*/
-	public static final int NETWORK_TYPE_EVDO_B = 12;
-	/** Current network is LTE */
-	public static final int NETWORK_TYPE_LTE = 13;
-	/** Current network is eHRPD */
-	public static final int NETWORK_TYPE_EHRPD = 14;
-	/** Current network is HSPA+ */
-	public static final int NETWORK_TYPE_HSPAP = 15;
-	/** Unknown network class. {@hide} */
-	public static final int NETWORK_CLASS_UNKNOWN = 0;
-	/** Class of broadly defined "2G" networks. {@hide} */
-	public static final int NETWORK_CLASS_2_G = 1;
-	/** Class of broadly defined "3G" networks. {@hide} */
-	public static final int NETWORK_CLASS_3_G = 2;
-	/** Class of broadly defined "4G" networks. {@hide} */
-	public static final int NETWORK_CLASS_4_G = 3;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.telephony.TelephonyManager;
 
-	public static String getNetworkClass(int networkType) {
-		Logger.i("getNetworkClass", "networkType:" + networkType);
-	    switch (networkType) {
-	        case NETWORK_TYPE_GPRS:
-	        case NETWORK_TYPE_EDGE:
-	        case NETWORK_TYPE_CDMA:
-	        case NETWORK_TYPE_1xRTT:
-	        case NETWORK_TYPE_IDEN:
-	    return "2G";
-	        case NETWORK_TYPE_UMTS:
-	        case NETWORK_TYPE_EVDO_0:
-	        case NETWORK_TYPE_EVDO_A:
-	        case NETWORK_TYPE_HSDPA:
-	        case NETWORK_TYPE_HSUPA:
-	        case NETWORK_TYPE_HSPA:
-	        case NETWORK_TYPE_EVDO_B:
-	        case NETWORK_TYPE_EHRPD:
-	        case NETWORK_TYPE_HSPAP:
-	    return "3G";
-	        case NETWORK_TYPE_LTE:
-	    return "4G";
-	        default:
-	    return "UNKNOW-"+networkType;
-	    }
+public class NetWorkUtil {
+	public static String getNetworkClass(Context context) {
+		ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo info = cm.getActiveNetworkInfo();
+		if(info==null || !info.isConnected()) {
+			return "-"; //not connected
+		}
+		if(info.getType() == ConnectivityManager.TYPE_WIFI) {
+			return "WIFI";
+		}
+		if(info.getType() == ConnectivityManager.TYPE_MOBILE){
+			int networkType = info.getSubtype();
+			switch (networkType) {
+				case TelephonyManager.NETWORK_TYPE_GPRS:
+				case TelephonyManager.NETWORK_TYPE_EDGE:
+				case TelephonyManager.NETWORK_TYPE_CDMA:
+				case TelephonyManager.NETWORK_TYPE_1xRTT:
+				case TelephonyManager.NETWORK_TYPE_IDEN: //api<8 : replace by 11
+					return "2G";
+				case TelephonyManager.NETWORK_TYPE_UMTS:
+				case TelephonyManager.NETWORK_TYPE_EVDO_0:
+				case TelephonyManager.NETWORK_TYPE_EVDO_A:
+				case TelephonyManager.NETWORK_TYPE_HSDPA:
+				case TelephonyManager.NETWORK_TYPE_HSUPA:
+				case TelephonyManager.NETWORK_TYPE_HSPA:
+				case TelephonyManager.NETWORK_TYPE_EVDO_B: //api<9 : replace by 14
+				case TelephonyManager.NETWORK_TYPE_EHRPD:  //api<11 : replace by 12
+				case TelephonyManager.NETWORK_TYPE_HSPAP:  //api<13 : replace by 15
+				case TelephonyManager.NETWORK_TYPE_TD_SCDMA:  //api<25 : replace by 17
+					return "3G";
+				case TelephonyManager.NETWORK_TYPE_LTE:    //api<11 : replace by 13
+				case TelephonyManager.NETWORK_TYPE_IWLAN:  //api<25 : replace by 18
+				case 19:  //LTE_CA
+					return "4G";
+				default:
+					return "?";
+			}
+		}
+		return "?";
 	}
 
 	public static void testRequest (int time){
@@ -75,5 +53,4 @@ public class NetWorkUtil {
 			Logger.e("testRequest: ", e.getMessage());
 		}
 	}
-
 }

@@ -23,6 +23,11 @@ public class ContextManager {
 
     private final Map context = new HashMap();
 
+    /**
+     * @param moduleName 模块名
+     * @param clazz 模块名对应的context定义类
+     * @return 存储在全局 ContextManager 对应的 moduleName 单例，用作模块内全局变量存储区
+     */
     public <T> T getModuleContext(String moduleName, Class<T> clazz) {
         Object moduleData = context.get(moduleName);
         if(moduleData == null){

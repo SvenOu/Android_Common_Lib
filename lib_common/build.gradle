@@ -24,6 +24,7 @@ dependencies {
     api fileTree(dir: 'libs', include: ['*.jar','*.aar'])
 
     api "${multidex}"
+    api "${eventbus}"
     api "${calligraphy}"
     api "${jacksonCore}"
     api "${jacksonAnnotations}"

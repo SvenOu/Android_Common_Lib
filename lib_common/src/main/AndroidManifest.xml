@@ -16,6 +16,10 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application>
+        <service
+            android:name=".init.InitializeIntentService"
+            android:exported="false"/>
+
         <activity
             android:name=".test.view.TestWigetActivity"
             android:screenOrientation="portrait">

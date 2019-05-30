@@ -36,6 +36,7 @@ public class InitializeIntentService extends IntentService {
         initStyles();
         initUmeng();
         initScheduledExecutor();
+        EventBus.getDefault().post(new FinishInitEvent());
     }
     private void initStyles() {
         ThemeManager.getInstance().init(application);
@@ -68,7 +69,6 @@ public class InitializeIntentService extends IntentService {
         ImageLoaderConfiguration config = builder.build();
         ImageLoader loader = ImageLoader.getInstance();
         loader.init(config);
-        EventBus.getDefault().post(new FinishInitEvent());
     }
 
     private void initScheduledExecutor(){

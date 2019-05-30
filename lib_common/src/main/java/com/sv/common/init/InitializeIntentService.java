@@ -68,6 +68,7 @@ public class InitializeIntentService extends IntentService {
         ImageLoaderConfiguration config = builder.build();
         ImageLoader loader = ImageLoader.getInstance();
         loader.init(config);
+        EventBus.getDefault().post(new FinishInitEvent());
     }
 
     private void initScheduledExecutor(){
@@ -79,10 +80,4 @@ public class InitializeIntentService extends IntentService {
             scheduledExecutorManager.start();
         }
     };
-
-    @Override
-    public void onDestroy() {
-        EventBus.getDefault().post(new FinishInitEvent());
-        super.onDestroy();
-    }
 }

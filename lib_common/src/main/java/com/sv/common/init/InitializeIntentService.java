@@ -8,6 +8,7 @@ import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
+import com.squareup.leakcanary.LeakCanary;
 import com.sv.common.CommonApplication;
 import com.sv.common.executor.ScheduledExecutorManager;
 import com.sv.lib_theme.ThemeManager;
@@ -31,6 +32,7 @@ public class InitializeIntentService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
+        initLeakCanary();
         initImageLoader();
         initArouter();
         initStyles();
@@ -38,6 +40,16 @@ public class InitializeIntentService extends IntentService {
         initScheduledExecutor();
         EventBus.getDefault().post(new FinishInitEvent());
     }
+
+    private void initLeakCanary() {
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            // This process is dedicated to LeakCanary for heap analysis.
+            // You should not init your app in this process.
+            return;
+        }
+        LeakCanary.install(application);
+    }
+
     private void initStyles() {
         ThemeManager.getInstance().init(application);
     }

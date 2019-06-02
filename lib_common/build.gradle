@@ -48,4 +48,9 @@ dependencies {
 
     debugApi "${blockcanary}"
     releaseApi "${blockcanaryNoOp}"
+
+    debugApi "${leakcanary}"
+    releaseApi "${leakcanaryNoOp}"
+    // Optional, if you use support library fragments:
+    debugApi "${leakcanarySupportFragment}"
 }
